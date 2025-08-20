@@ -10,7 +10,7 @@ function App() {
 
 
   return (
-    <div className='w-full flex flex-col h-auto bg-violet-800 gap-10'>
+    <div className='w-full flex flex-col h-auto bg-gray-800 gap-10'>
       <BrowserRouter>
         <header>
           <Header />
