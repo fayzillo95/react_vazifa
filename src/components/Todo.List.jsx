@@ -44,7 +44,7 @@ export default function DataTable({ filter }) {
     }, [filter,todos])
     return (
         <div className="relative w-full h-full">
-            <div className="container mx-auto px-10">
+            <div className="container mx-auto px-10 min-h-[480px]  shadow-2xl py-10">
                 <TableContainer component={Paper} sx={{ maxHeight: 400 }}>
                     <Table stickyHeader>
                         <TableHead>
@@ -78,9 +78,9 @@ export default function DataTable({ filter }) {
                                     {Object.keys(row).map((field, cellIndex) => (
                                         <TableCell
                                             sx={{ borderRight: 2 }}
-                                            key={cellIndex + "_cell"}
+                                            key={cellIndex + "_cell"} 
                                         >
-                                            {row[field]}
+                                            <p className={field === "status" ? row[field] === "active" ? "text-blue-800" : "text-green-600" : "text-violet-500"}>{row[field]}</p>
                                         </TableCell>
                                     ))}
 
