@@ -63,7 +63,9 @@ export default function DataTable({ filter }) {
                                         }}
                                         title={column.description ? column.description : column.headerName}
                                     >
-                                        {column.headerName}
+                                        {
+                                            column.field === "actions" ? column.headerName +" _   Count todo "+ filteredTodo.length : column.headerName
+                                        }
                                     </TableCell>
                                 ))}
                             </TableRow>
