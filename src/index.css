@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
 
-.active_btn{
-    @apply !underline underline-offset-4
+.active {
+    @apply underline underline-offset-4 text-blue-800 
 }

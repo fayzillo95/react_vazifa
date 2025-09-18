@@ -5,3 +5,14 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),tailwindcss()],
 })
+
+
+/*
+Yup
+Zod
+Superstruct
+Formik
+Forms
+react Hoock dom
+
+*/
