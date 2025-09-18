@@ -12,6 +12,32 @@ export type DistrictInID = {
 };
 export type District = { value: string; label: string; };
 
+export const registerInputs = [
+  {
+    name: "username",
+    id: "1",
+    label: "Username",
+    placeholder: "Enter your username ....",
+    type: "text",
+  },
+  {
+    name: "email",
+    id: "2",
+    label: "Email",
+    placeholder: "Enter your email ....",
+    type: "email",
+  },
+  {
+    name: "password",
+    id: "3",
+    label: "Password",
+    placeholder: "Enter your password ....",
+    type: "password",
+    hasToggle: true, // bu password uchun ko‘z chiqishi kerakligini bildiradi
+  },
+];
+
+
 export const regions: Region[] = [
     { id: "A0001", value: "toshkent", label: "Toshkent shahri" },
     { id: "A0002", value: "toshkent_viloyati", label: "Toshkent viloyati" },
