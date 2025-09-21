@@ -1,50 +1,107 @@
 "use client"
-
-import Regions from "@/components/country";
-import { districts, regions, registerInputs } from "@/types/Country.type";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
-import { useState } from "react";
 import React from "react";
-import { Visibility, VisibilityOff } from "@mui/icons-material"
+import { useEffect, useState } from "react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faRoad, faLocation, faRoute, faChevronDown, faChevronUp, faBars, faBaby } from "@fortawesome/free-solid-svg-icons"
+import { faDiscord } from "@fortawesome/free-brands-svg-icons"; // ✅ faDiscord shu yerda
+
+import logo from "../../public/images/logo_.svg"
+
+import Image from "next/image";
+
+import { Button, List, ListItem, MenuItem, Select } from "@mui/material";
+import { GitHub, MapTwoTone } from "@mui/icons-material";
+
+import Link from "next/link";
+
+import { MenuItemType } from "@/types/Menu.Props";
+import MenuItemsSelect from "@/components/headr-components/MenuItems";
+import AccountMenu from "@/components/headr-components/Settings";
+import { fa3 } from "@fortawesome/free-solid-svg-icons/fa3";
+
 
 export default function Home() {
 
-  const [showPassword, setShowPassword] = useState(false);
+  const [laguange, setlaguange] = useState<"uz" | "en" | "ru">("uz");
+  const explore: MenuItemType[] = [
+    {
+      id: 1,
+      name: "Learning Path",
+      icon: <FontAwesomeIcon icon={faRoute} />
+    }, {
+      id: 2,
+      name: "Challange",
+      icon: <FontAwesomeIcon icon={faLocation} />
+    }, {
+      id: 3,
+      name: "Challange",
+      icon: <FontAwesomeIcon icon={faLocation} />
+    }
+  ]
+  const for_components: MenuItemType[] = [
+    {
+      id: 1,
+      name: "Learning Path",
+      icon: <FontAwesomeIcon icon={faRoute} />
+    }, {
+      id: 2,
+      name: "Challange",
+      icon: <FontAwesomeIcon icon={faLocation} />
+    }, {
+      id: 3,
+      name: "Challange",
+      icon: <FontAwesomeIcon icon={faLocation} />
+    }
+  ]
+  const [isOpens, setIsOpens] = useState<boolean[]>(Array(explore.length).fill(false))
 
-  const handleTogglePassword = () => setShowPassword((prev) => !prev);
+  useEffect(() => console.log(isOpens), [isOpens])
 
   return (
-    <div className="h-screen w-full">
-      <div className="container mx-auto flex justify-center items-center h-screen">
-        <form className="w-[500px] h-[600px] flex flex-col gap-6 p-4 shadow-2xl rounded-2xl">
-          <h1 className="font-extrabold bg-gradient-to-b from-violet-800 to-red-600 bg-clip-text text-transparent text-2xl">Soxta forma</h1>
-          {registerInputs.map((input) => (
-            <TextField
-              key={input.id}
-              name={input.name}
-              label={input.label}
-              placeholder={input.placeholder}
-              type={input.hasToggle ? (showPassword ? "text" : "password") : input.type}
-              fullWidth
-              InputProps={
-                input.hasToggle
-                  ? {
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <IconButton onClick={handleTogglePassword} edge="end">
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }
-                  : undefined
-              }
-            />
-          ))}
-          <Regions />
-          <h1 className="w-1/3 mx-auto h-11 border-2 text-center py-2 rounded-2xl bg-green-400 cursor-pointer">SUBMIT</h1>
-        </form>
-      </div>
+    <div className="min-h-screen w-full">
+      <header className="w-full py-4">
+        <div className="container mx-auto flex justify-between max-md:flex-col items-center">
+          <div className="logo flex items-center max-md:flex-col">
+            <Image src={logo} alt="Logo" width={200} height={100} />
+          </div>
+          <div className="flex">
+            <List sx={{ display: "flex" }} className="max-md:flex-col">
+              <ListItem>
+                  <AccountMenu itemList={explore} menuName="Explore" />
+              </ListItem>
+              <ListItem>
+                  <AccountMenu itemList={for_components} menuName="For Components" />
+              </ListItem>
+              <ListItem>
+                <Link className="border disabled:bg-neutral-500 disabled:border-neutral-500 flex font-bold font-secondary italic items-center justify-center px-5 text-center tracking-wider transition-colors rounded-full uppercase w-fit gap-2 whitespace-nowrap bg-neutral-900 border-neutral-900 hover:bg-neutral-700 hover:border-neutral-700 text-white py-2 text-sm" href="https://github.com/login/oauth/authorize?client_id=f71675ff0aff88252d33&amp;scope=user:email" target="_blank">
+                  with GitHub
+                  <GitHub />
+                </Link>
+              </ListItem>
+            </List>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section className="container  mx-auto px-30 py-12">
+          <div className={`bg-no-repeat bg-[rgba(46,59,129,0.98)] [background-image:url('/images/bg-discord.svg')] [background-position:top_10%_right_-4rem] container-xl flex flex-col gap-6 items-center rounded-xl px-5 py-8 text-center text-white space-y-6`}>
+            <div className="flex gap-4">
+              <FontAwesomeIcon icon={faDiscord} className="text-5xl font-extrabold" />
+              <h1 className="capitalize text-5xl font-extrabold"> discord</h1>
+            </div>
+            <h2 className="font-bold font-primary uppercase tracking-widest text-4xl">
+              Join our Discord community
+            </h2>
+            <p className="max-w-prose text-2xl">
+              Join thousands of Frontend Mentor community members taking the challenges, sharing resources, helping each other, and chatting about all things front-end!
+            </p>
+            <a className="border disabled:bg-neutral-500 disabled:border-neutral-500 flex font-bold font-secondary italic items-center justify-center px-5 py-3 text-center text-base tracking-wider transition-colors rounded-full uppercase w-fit leading-none bg-white border-white hover:bg-neutral-50 hover:border-neutral-50 text-blue-600" href="https://discord.gg/UAfh3qzhYb">
+              Join our Discord
+            </a>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
