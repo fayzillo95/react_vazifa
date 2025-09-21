@@ -31,7 +31,7 @@ export default function AccountMenu({ itemList,menuName }: { itemList: MenuItemT
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center',gap:1 ,cursor : "pointer"}} onClick={handleClick}>
-        <Typography sx={{textTransform : "uppercase", fontSize : 16 , whiteSpace : "nowrap"}} >{menuName}</Typography>
+        <Typography sx={{textTransform : "uppercase", fontSize : 16 , whiteSpace : "nowrap",}}  className='italic'>{menuName}</Typography>
 
         {
           open ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />
