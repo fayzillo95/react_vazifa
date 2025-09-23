@@ -13,19 +13,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int    @id @default(autoincrement())
-  firstName String
-  lastName  String
-  email     String
-  password  String
-  Post      Post[]
-}
-
-model Post {
-  id     Int    @id @default(autoincrement())
-  userId Int
-  text   String
-
-  user User @relation(fields: [userId], references: [id])
+model Group{
+  id Int @id @default(autoincrement())
+  name String
+  startDate DateTime
+  monthDuration Int
+  daysOfWeek Int
 }
